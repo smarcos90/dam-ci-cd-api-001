@@ -2,9 +2,9 @@ name: CI - Construcción con Maven
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
   build-test:
@@ -20,6 +20,9 @@ jobs:
           distribution: temurin
           java-version: "17"
           cache: maven
+
+      - name: Dar permisos al Maven Wrapper
+        run: chmod +x mvnw
 
       - name: Compilar y ejecutar tests con Maven Wrapper
         run: ./mvnw -B clean test
